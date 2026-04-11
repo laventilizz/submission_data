@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
+import os
 
 st.set_page_config(page_title="E-Commerce Dashboard", layout="wide")
 sns.set(style='darkgrid')

@@ -7,3 +7,8 @@
    ```bash
    pip install -r requirements.txt
 4. Masuk ke direktori dashboard
+   ```bash
+   cd dashboard
+5. Jalankan dashboard
+   ```bash
+   streamlit run dashboard.py

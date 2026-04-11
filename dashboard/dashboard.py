@@ -8,14 +8,17 @@ sns.set(style='darkgrid')
 
 @st.cache_data
 def load_data():
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    DATA_DIR = os.path.join(BASE_DIR, "..", "data")
+
     # Load dataset
-    customers_df = pd.read_csv("../data/customers_dataset.csv")
-    orders_df = pd.read_csv("../data/orders_dataset.csv")
-    order_items_df = pd.read_csv("../data/order_items_dataset.csv")
-    order_payments_df = pd.read_csv("../data/order_payments_dataset.csv")
-    order_reviews_df = pd.read_csv("../data/order_reviews_dataset.csv")
-    products_df = pd.read_csv("../data/products_dataset.csv")
-    category_translation_df = pd.read_csv("../data/product_category_name_translation.csv")
+    customers_df = pd.read_csv(os.path.join(DATA_DIR, "customers_dataset.csv"))
+    orders_df = pd.read_csv(os.path.join(DATA_DIR, "orders_dataset.csv"))
+    order_items_df = pd.read_csv(os.path.join(DATA_DIR, "order_items_dataset.csv"))
+    order_payments_df = pd.read_csv(os.path.join(DATA_DIR, "order_payments_dataset.csv"))
+    order_reviews_df = pd.read_csv(os.path.join(DATA_DIR, "order_reviews_dataset.csv"))
+    products_df = pd.read_csv(os.path.join(DATA_DIR, "products_dataset.csv"))
+    category_translation_df = pd.read_csv(os.path.join(DATA_DIR, "product_category_name_translation.csv"))
     
     # 1. cleaning & format datetime
     datetime_cols = ["order_purchase_timestamp", "order_delivered_customer_date", "order_estimated_delivery_date"]

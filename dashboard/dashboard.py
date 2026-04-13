@@ -56,10 +56,47 @@ def load_data():
 
 # load data
 category_revenue, review_by_delivery, rfm = load_data()
+st.sidebar.header("🔍 Filter Data")
+
+@st.cache_data
+def load_raw():
+    orders = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/orders_dataset.csv")
+    orders["order_purchase_timestamp"] = pd.to_datetime(orders["order_purchase_timestamp"])
+    return orders
+
+orders_raw = load_raw()
+
+# filter tanggal
+min_date = orders_raw["order_purchase_timestamp"].min()
+max_date = orders_raw["order_purchase_timestamp"].max()
+
+date_range = st.sidebar.date_input(
+    "Pilih Rentang Tanggal",
+    [min_date, max_date]
+)
+
+# validasi
+if len(date_range) == 2:
+    start_date, end_date = date_range
+    orders_filtered = orders_raw[
+        (orders_raw["order_purchase_timestamp"] >= pd.to_datetime(start_date)) &
+        (orders_raw["order_purchase_timestamp"] <= pd.to_datetime(end_date))
+    ]
+else:
+    orders_filtered = orders_raw.copy()
 
 # DASHBOARD UI
 st.title("E-Commerce Public Data Dashboard")
 st.markdown("---")
+
+st.subheader("KPI Metrics")
+
+total_orders = len(orders_filtered)
+total_customers = orders_filtered["customer_id"].nunique()
+
+col1, col2 = st.columns(2)
+col1.metric("Total Orders", total_orders)
+col2.metric("Total Customers", total_customers)
 
 # 1: performa produk
 st.header("1. Performa Kategori Produk (Revenue)")

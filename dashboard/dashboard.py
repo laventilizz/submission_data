@@ -56,7 +56,7 @@ def load_data():
 
 # load data
 category_revenue, review_by_delivery, rfm = load_data()
-st.sidebar.header("🔍 Filter Data")
+st.sidebar.header("Filter")
 
 @st.cache_data
 def load_raw():

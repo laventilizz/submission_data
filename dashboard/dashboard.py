@@ -83,14 +83,14 @@ review_by_delivery = create_review_delivery_df(main_df_filtered, order_reviews_d
 rfm = create_rfm_df(main_df_filtered, main_df) # Menggunakan data terfilter
 
 # --- 5. TAMPILKAN UI ---
-st.title("🛒 E-Commerce Dashboard")
+st.title("E-Commerce Dashboard")
 
 # Row 1: Metrics
 col1, col2, col3 = st.columns(3)
 with col1:
     st.metric("Total Orders", value=main_df_filtered.order_id.nunique())
 with col2:
-    st.metric("Total Revenue", value=f"BRL {main_df_filtered.payment_value.sum():,.2f}")
+    st.metric("Total Revenue", value=f"{main_df_filtered.payment_value.sum():,.2f}")
 with col3:
     st.metric("Total Customers", value=main_df_filtered.customer_unique_id.nunique())
 

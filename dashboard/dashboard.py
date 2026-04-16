@@ -36,13 +36,13 @@ def create_rfm_df(df, customers_df):
 # --- 2. LOAD DATA MENTAH ---
 @st.cache_data
 def load_raw_data():
-    customers_df = pd.read_csv("data/customers_dataset.csv")
-    orders_df = pd.read_csv("data/orders_dataset.csv")
-    order_items_df = pd.read_csv("data/order_items_dataset.csv")
-    order_payments_df = pd.read_csv("data/order_payments_dataset.csv")
-    order_reviews_df = pd.read_csv("data/order_reviews_dataset.csv")
-    products_df = pd.read_csv("data/products_dataset.csv")
-    category_translation_df = pd.read_csv("data/product_category_name_translation.csv")
+    customers_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/customers_dataset.csv")
+    orders_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/orders_dataset.csv")
+    order_items_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/order_items_dataset.csv")
+    order_payments_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/order_payments_dataset.csv")
+    order_reviews_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/order_reviews_dataset.csv")
+    products_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/products_dataset.csv")
+    category_translation_df = pd.read_csv("https://raw.githubusercontent.com/laventilizz/submission_data/refs/heads/main/data/product_category_name_translation.csv")
     
     # Format Datetime
     datetime_cols = ["order_purchase_timestamp", "order_delivered_customer_date", "order_estimated_delivery_date"]
